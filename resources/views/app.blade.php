@@ -5,7 +5,7 @@
         <meta name="viewport" content="width=device-width, initial-scale=1">
 
         {{-- Inline script to detect system dark mode preference and apply it immediately --}}
-        <script>
+        <!-- <script>
             (function() {
                 const appearance = '{{ $appearance ?? "system" }}';
 
@@ -17,7 +17,7 @@
                     }
                 }
             })();
-        </script>
+        </script> -->
 
         {{-- Inline style to set the HTML background color based on our theme in app.css --}}
         <style>
@@ -30,9 +30,9 @@
             }
         </style>
 
-        <link rel="icon" href="/favicon.ico" sizes="any">
-        <link rel="icon" href="/favicon.svg" type="image/svg+xml">
-        <link rel="apple-touch-icon" href="/apple-touch-icon.png">
+        <link rel="icon" href="/favicon.png" sizes="any">
+        <link rel="icon" href="/favicon.png" type="image/png">
+        <link rel="apple-touch-icon" href="/favicon.png">
 
         @fonts
 
