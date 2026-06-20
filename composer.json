@@ -109,13 +109,6 @@
             "php-http/discovery": true
         }
     },
-    {
-    "require": {
-        "php": "^8.4",
-        "ext-intl": "*",
-        "ext-zip": "*"
-    },
-
-    "minimum-stability": "stable"
+      "minimum-stability": "stable"
     
 }
