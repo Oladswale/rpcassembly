@@ -24,7 +24,7 @@ export default function Events() {
                                 className="flex flex-col md:flex-row items-start md:items-center p-6 border border-gray-100 rounded-xl bg-gray-50 gap-4"
                             >
                                 {/* Date Box */}
-                                <div className="flex-shrink-0 w-24 h-24 bg-red-600 text-white rounded-lg flex flex-col items-center justify-center text-center p-2">
+                                <div className="shrink-0 w-24 h-24 bg-red-600 text-white rounded-lg flex flex-col items-center justify-center text-center p-2">
                                     <span className="text-xs font-bold uppercase tracking-wide opacity-90">
                                         {event.date.split(' ')[0]}
                                     </span>
@@ -34,7 +34,7 @@ export default function Events() {
                                 </div>
 
                                 {/* Event Details */}
-                                <div className="flex-grow">
+                                <div className="grow">
                                     <h3 className="text-xl font-bold">{event.title}</h3>
                                     <p className="text-gray-600">
                                         {event.time} • {event.location}
