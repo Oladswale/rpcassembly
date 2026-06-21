@@ -5,7 +5,7 @@ namespace App\Models;
 // use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Database\Factories\UserFactory;
 use Filament\Models\Contracts\FilamentUser; 
-use Filament\Panel; // <-- 2. Imported the Panel class
+use Filament\Panel; 
 use Illuminate\Database\Eloquent\Attributes\Fillable;
 use Illuminate\Database\Eloquent\Attributes\Hidden;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
@@ -41,7 +41,7 @@ class User extends Authenticatable implements FilamentUser
         }
 
         // Allow access to your specific admin email address on Railway
-        return $this->email === 'youradmin@example.com'; 
+        return $this->email === 'admin@rpcassembly.org'; 
         
         // Alternatively, you can allow any email ending with your domain:
         // return str_ends_with($this->email, '@yourdomain.com');
