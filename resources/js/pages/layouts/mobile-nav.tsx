@@ -15,20 +15,20 @@ const MobileNav: React.FC<MobileNavProp> = ({ isModalOpen, closeMenu }) => {
     const { url } = usePage();
     
     return (
-        <nav className='flex md:hidden fixed inset-0 w-full h-full z-50'>
+        <nav className='flex md:hidden fixed inset-0 w-full h-full z-50 overflow-hidden'>
             {/* Drawer Area */}
-            <div className='w-[70%] z-20 top-0 bg-primary absolute right-0 h-full pl-4 py-5 shadow-2xl'>
+            <div className='w-[70%] z-20 top-0 bg-deep-purple absolute right-0 h-full pl-4 py-5 shadow-2xl'>
                 <button onClick={closeMenu} className="focus:outline-none">
                     <X size={30} className='text-white cursor-pointer' />
                 </button>
                 
-                <ul className='space-y-4 mt-8 pl-7'>
+                <ul className='space-y-4 mt-3 pl-7'>
                     {navLinks.map(({ title, href }) => (
                         <li key={title}>
                             <Link 
                                 href={href} 
                                 onClick={closeMenu}
-                                className={`text-lg font-normal block py-1 transition-colors ${url === href ? 'text-accent font-semibold' : 'text-white hover:text-accent'}`}
+                                className={`text-lg font-normal block py-1 transition-colors ${url === href ? 'text-accent-gold font-semibold' : 'text-white hover:text-accent'}`}
                             >
                                 {title}
                             </Link>
