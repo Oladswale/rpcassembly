@@ -3,7 +3,7 @@ import PublicLayout from './layouts/appLayout';
 import { Head } from '@inertiajs/react';
 import ProgramsSection from '@/components/pages/home/ProgramsSection';
 import AboutSection from '@/components/pages/home/AboutSection';
-import Hero from '@/components/pages/home/Hero';
+import Hero from '@/components/pages/home/hero';
 import HomeEventSection from '@/components/pages/home/HomeEventSection';
 
 
