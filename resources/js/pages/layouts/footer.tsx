@@ -36,7 +36,7 @@ const resources = [
 
 const Footer = () => {
     return (
-        <footer className='bg-deep-purple text-white py-5'>
+        <footer className='bg-deep-purple text-white py-5 md:pt-10'>
             <div className='max-w-7xl mx-auto'>
                 <div className='grid grid-cols-1 md:grid-cols-4 lg:grid-cols-[1.5fr_1fr_1fr_1.2fr] gap-6 lg:gap-10 items-start'>
 
