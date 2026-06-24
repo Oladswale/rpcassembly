@@ -5,6 +5,8 @@ import ProgramsSection from '@/components/pages/home/ProgramsSection';
 import AboutSection from '@/components/pages/home/AboutSection';
 import Hero from '@/components/pages/home/hero';
 import HomeEventSection from '@/components/pages/home/HomeEventSection';
+import SermonSection from '@/components/pages/home/SermonSection';
+import CtaSection from '@/components/pages/home/CtaSection';
 
 
 export default function Welcome() {
@@ -17,6 +19,8 @@ export default function Welcome() {
                 <ProgramsSection />
                 <AboutSection />
                 <HomeEventSection />
+                <SermonSection />
+                {/* <CtaSection /> */}
             </main>
         </PublicLayout>
     );

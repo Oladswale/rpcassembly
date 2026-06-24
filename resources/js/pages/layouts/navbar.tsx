@@ -17,7 +17,7 @@ const Navbar = () => {
                             <Link 
                                 href={href}
                                 style={{ animationDelay: `${index * 75}ms` }}
-                                className={`text-lg font-medium relative py-1 transition-all duration-300 block group animate-[fadeInDown_0.4s_both] ${
+                                className={`text-lg font-medium relative py-1 text-nowrap transition-all duration-300 block group animate-[fadeInDown_0.4s_both] ${
                                     isActive 
                                         ? 'text-purple-200 drop-shadow-[0_0_10px_rgba(233,213,255,0.6)]' 
                                         : 'text-white/70 hover:text-white hover:drop-shadow-[0_0_6px_rgba(255,255,255,0.5)]'
@@ -37,7 +37,7 @@ const Navbar = () => {
                 })}
             </ul>
 
-            <div className="relative ml-8 group">
+            <div className="relative ml-8 group hidden lg:block ">
                 <div className="absolute -inset-0.5 bg-gradient-to-r from-red-600 to-pink-600 rounded-md blur opacity-60 group-hover:opacity-100 transition duration-1000 group-hover:duration-200 animate-[pulse_2s_infinite]" />
                 
                 <Button 
