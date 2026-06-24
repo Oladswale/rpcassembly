@@ -4,26 +4,36 @@ interface CustomImageProps extends HTMLAttributes<HTMLImageElement> {
     src: string,
     alt: string;
     className?: string;
+    wrapperClassName?: string;
+    loading?: 'eager' | 'lazy';
+    overlayClassName?: string;
 }
 
-const CustomImage: React.FC<CustomImageProps> = ({ src, alt, className, ...props }) => {
+const CustomImage: React.FC<CustomImageProps> = ({ src, alt, className, loading, wrapperClassName, overlayClassName, ...props }) => {
     const [isLoading, setIsLoading] = useState<boolean>(true)
 
     return (
-        <div className='relative overflow-hidden'>
-            {isLoading && (
-                <div
-                    className={`absolute inset-0 animate-pulse-fast bg-gray-200 ${isLoading ? 'opacity-100' : 'opacity-0'}`}
-                />
-            )}
-
+        <div className={cn('relative overflow-hidden w-full h-full', wrapperClassName)}>
             <img
                 src={src}
                 alt={alt}
+                loading={loading}
                 onLoad={() => setIsLoading(false)}
-                className={cn('transition-opacity duration-300', isLoading ? 'opacity-0' : 'opacity-100', className)}
+                className={cn(
+                    'w-full h-full transition-opacity duration-300',
+                    isLoading ? 'opacity-0' : 'opacity-100',
+                    className
+                )}
                 {...props}
             />
+
+            {overlayClassName && (
+                <div className={cn('absolute inset-0', overlayClassName)} />
+            )}
+
+            {isLoading && (
+                <div className="absolute inset-0 z-10 animate-pulse-fast bg-gray-200" />
+            )}
         </div>
     )
 }

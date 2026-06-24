@@ -15,6 +15,7 @@ import Event6 from '../../js/assets/images/event-6.jpg'
 import Event7 from '../../js/assets/images/event-7.jpg'
 
 
+
 export const navLinks: NavItem[] = [
     { title: "Home", href: "/" },
     { title: "About Us", href: "/about" },
@@ -31,9 +32,9 @@ export interface InfoType {
     time: string,
     description: string,
     icon: ComponentType<SVGProps<SVGElement>>,
-    iconBgColor : string
+    iconBgColor: string
 }
-export const serviceTimes : InfoType[] = [
+export const serviceTimes: InfoType[] = [
     {
         title: "Sunday Service",
         time: "8:30 AM",
@@ -68,11 +69,11 @@ export type EventsType = {
     id: string | number,
     image: string,
     title: string,
-    date: string | Date,
-    time: string | TimeRanges
-    location : string
+    date: string,
+    time: string,
+    location: string
 }
-export const events : Array<EventsType> = [
+export const events: Array<EventsType> = [
     {
         id: 1,
         image: Event1,
@@ -138,3 +139,39 @@ export const events : Array<EventsType> = [
         location: "RPC Assembly",
     },
 ];
+
+export type SermonType = {
+    id: string | number,
+    videoUrl: string,
+    title: string,
+    speaker: string,
+    date: string,
+    description: string,
+}
+export const sermons: SermonType[] = [
+    {
+        id: 1,
+        videoUrl: "https://www.youtube.com/watch?v=pe7TyiGyFro",
+        title: "Walking in Faith",
+        speaker: "Pastor Olufisayo",
+        date: "June 14, 2026",
+        description: "Discover how to trust God's plan even when the path ahead seems unclear.",
+    },
+    {
+        id: 2,
+        videoUrl: "https://www.youtube.com/watch?v=wNtg9I55syQ&list=RDwNtg9I55syQ&start_radio=1",
+        title: "The Power of Grace",
+        speaker: "Pastor Olufisayo",
+        date: "June 7, 2026",
+        description: "Understanding the transformative power of God's unmerited favor in our lives.",
+    },
+    {
+        id: 3,
+        videoUrl: "https://www.youtube.com/watch?v=jNQXAC9IVRw",
+        title: "Living with Purpose",
+        speaker: "Pastor Olufisayo",
+        date: "May 31, 2026",
+        description: "Find your God-given purpose and learn to walk in it daily.",
+    },
+]
+
