@@ -1,7 +1,6 @@
 import WaveSvg from '@/assets/svgs/wave'
 import { Button } from '@/components/ui/button'
 import { Link } from '@inertiajs/react'
-import React from 'react'
 import Img1 from '@/assets/images/img-1.webp'
 import Img2 from '@/assets/images/img-2.webp'
 import Img3 from '@/assets/images/img-3.webp'
