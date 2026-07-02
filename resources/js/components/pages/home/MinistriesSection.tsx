@@ -2,7 +2,8 @@ import { SectionHeader } from '@/components/ui/section-header'
 import HorizontalLine from '@/components/ui/horizontal-line'
 import { Button } from '@/components/ui/button'
 import { Link } from '@inertiajs/react'
-import { Users, Heart, BookOpen, Music, Children, Coffee } from 'lucide-react'
+import { Users, Heart, BookOpen, Music, Baby, Coffee } from "lucide-react";
+
 
 const ministries = [
     {
@@ -12,7 +13,7 @@ const ministries = [
         color: 'bg-royal-purple'
     },
     {
-        icon: Children,
+        icon: Baby,
         title: 'Kids Church',
         description: 'Fun and engaging biblical teaching for children of all ages',
         color: 'bg-accent-gold'
