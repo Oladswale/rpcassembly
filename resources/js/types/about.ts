@@ -1,5 +1,3 @@
-import Img1 from '../../js/assets/images/img-1.webp'
-
 export type CoreValueType = {
     title: string,
     description: string,
@@ -29,6 +27,10 @@ export const coreValues: CoreValueType[] = [
         title: "Humility",
         description: "Walking in meekness, esteeming others above ourselves."
     },
+    {
+        title: "Hope",
+        description: "Anchored in the unshakeable hope of Christ's promises for our lives."
+    },
 ]
 
 export type MinisterType = {
@@ -40,26 +42,26 @@ export const ministers: MinisterType[] = [
     {
         name: "Pastor Olufisayo",
         role: "Pastor",
-        image: Img1
+        image: "/dad.jpg"
     },
     {
-        name: "Lady Evangelist  Olufisayo",
+        name: "Lady Evangelist Olufisayo",
         role: "Lady Evangelist",
-        image: Img1
+        image: "/mum.jpg"
     },
     {
         name: "Evangelist Kay",
         role: "Evangelist",
-        image: Img1
+        image: "/eva.jpg"
     },
     {
         name: "Evangelist Timothy",
         role: "Evangelist",
-        image: Img1
+        image: "/eva2.jpg"
     },
     {
         name: "Lady Evangelist Charles",
         role: "Evangelist",
-        image: Img1
+        image: "/eva1.jpg"
     },
 ]

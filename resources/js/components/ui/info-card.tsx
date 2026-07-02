@@ -1,24 +1,31 @@
 import { InfoType } from '@/types/data'
-import React from 'react'
 
-
-const InfoCard: React.FC<InfoType> = (props) => {
+const InfoCard: React.FC<InfoType & { isLast?: boolean }> = (props) => {
     const Icon = props.icon
     return (
-        <aside>
-            <div className='flex items-center flex-col text-center gap-2 xs:flex-row xs:text-left'>
-                {/* Icon */}
-                <div style={{ backgroundColor: props.iconBgColor }} className='p-2 md:p-3 rounded-full'>
-                    <Icon className='text-white w-5 h-5 md:w-7 md:h-7' />
-                </div>
+        <div className='flex items-start gap-4'>
+            {/* Time */}
+            <div className='w-20 shrink-0 text-right pt-1'>
+                <span className='text-sm font-bold text-royal-purple'>{props.time}</span>
+            </div>
 
+            {/* Timeline spine */}
+            <div className='flex flex-col items-center shrink-0'>
+                <div style={{ backgroundColor: props.iconBgColor }} className='w-3 h-3 rounded-full mt-1.5 z-10' />
+                {!props.isLast && <div className='w-px flex-1 bg-gradient-to-b from-gray-300 to-transparent mt-1' style={{ minHeight: '3rem' }} />}
+            </div>
+
+            {/* Content */}
+            <div className='flex items-start gap-3 pb-8'>
+                <div style={{ backgroundColor: props.iconBgColor }} className='p-2 rounded-full shrink-0'>
+                    <Icon className='text-white w-5 h-5' />
+                </div>
                 <div>
-                    <p className='uppercase text-sm md:text-lg font-medium text-royal-purple'>{props.title}</p>
-                    <p className='uppercase text-lg md:text-2xl font-bold text-deep-navy'>{props.time}</p>
-                    <p className='capitalize text-xs md:text-base font-medium text-deep-purple'>{props.description}</p>
+                    <p className='font-bold text-deep-navy text-base'>{props.title}</p>
+                    <p className='text-sm text-gray-500'>{props.description}</p>
                 </div>
             </div>
-        </aside>
+        </div>
     )
 }
 

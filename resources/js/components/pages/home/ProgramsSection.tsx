@@ -1,6 +1,5 @@
 import InfoCard from '@/components/ui/info-card'
 import { serviceTimes } from '@/types/data'
-import React from 'react'
 
 const ProgramsSection = () => {
     return (
@@ -11,16 +10,18 @@ const ProgramsSection = () => {
                         <h2 className='text-3xl lg:text-4xl font-serif font-bold text-royal-purple mb-3'>Service Times</h2>
                         <p className='text-lg font-sans text-gray-600'>Join us for worship and fellowship</p>
                     </div>
-                    <div className='grid grid-cols-1 xs:grid-cols-2 lg:grid-cols-4 gap-6 lg:gap-8'>
-                        {
-                            serviceTimes.map((service) => (
-                                <InfoCard key={service.title} {...service} />
-                            ))
-                        }
+
+                    <div className='max-w-md mx-auto'>
+                        {serviceTimes.map((service, index) => (
+                            <InfoCard
+                                key={service.title}
+                                {...service}
+                                isLast={index === serviceTimes.length - 1}
+                            />
+                        ))}
                     </div>
                 </div>
             </div>
-
         </section>
     )
 }

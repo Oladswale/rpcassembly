@@ -6,80 +6,107 @@ import Img2 from '@/assets/images/img-2.webp'
 import Img3 from '@/assets/images/img-3.webp'
 import Img4 from '@/assets/images/img-4.webp'
 import { ArrowRight, MapPin } from 'lucide-react'
+import { useState, useEffect } from 'react'
+
+const slides = ['/hero.jpg', '/youth.jpg', '/worship.jpg', '/pst.jpg', '/pst2.jpg', '/pst3.jpg', '/pst4.jpg']
 
 const Hero = () => {
     const images = [Img1, Img2, Img3, Img4]
+    const [current, setCurrent] = useState(0)
+
+    useEffect(() => {
+        const timer = setInterval(() => setCurrent((prev) => (prev + 1) % slides.length), 5000)
+        return () => clearInterval(timer)
+    }, [])
 
     return (
-        <section className='relative pt-16 pb-20 md:pb-24 lg:py-32 lg:pb-40 overflow-hidden min-h-[90vh] flex items-center'>
+        <section className='relative pt-20 pb-28 md:pt-24 md:pb-32 lg:py-36 lg:pb-44 overflow-hidden'>
 
-            <div className='max-w-7xl mx-auto h-full w-full relative'>
+            {slides.map((src, index) => (
                 <img
-                    src="/herobanner.jpg"
+                    key={src}
+                    src={src}
                     alt="Rpc hero banner"
-                    className='absolute inset-0 h-full w-full object-cover object-center'
-                    loading='eager'
+                    className={`absolute inset-0 h-full w-full object-cover object-center transition-opacity duration-1000 ease-in-out ${index === current ? 'opacity-100' : 'opacity-0'}`}
+                    loading={index === 0 ? 'eager' : 'lazy'}
                 />
+            ))}
 
-                {/* Overlay */}
-                <div className='absolute inset-0 bg-gradient-to-r from-deep-purple/80 via-royal-purple/70 to-deep-purple/60' />
+            {/* Overlay */}
+            <div className='absolute inset-0 bg-gradient-to-r from-deep-purple/95 via-royal-purple/75 to-deep-purple/20' />
 
-                {/* content */}
-                <div className='relative z-10 flex h-full items-center'>
-                    <div className='container mx-auto lg:px-8 space-y-6 lg:space-y-8 text-white text-center md:text-left'>
+            {/* Content */}
+            <div className='relative z-10 max-w-7xl mx-auto px-6 lg:px-8'>
+                <div className='max-w-2xl space-y-6 text-white'>
 
-                        <p className='px-4 lg:px-6 py-2 border-2 border-accent-gold/60 bg-white/10 backdrop-blur-sm w-fit rounded-full text-sm lg:text-lg font-medium tracking-wider mx-auto md:mx-0 uppercase'>
-                            Welcome to RPC Assembly
-                        </p>
+                    {/* Badge */}
+                    <span className='inline-block px-4 py-1.5 border border-white/60 rounded-full text-xs font-semibold tracking-widest uppercase text-white/80'>
+                        Welcome to RPC Assembly
+                    </span>
 
-                        <h1 className='text-[2rem] leading-tight md:text-5xl md:leading-tight lg:text-7xl font-serif font-bold lg:leading-tight tracking-tight'>
-                            Raising Redeemed People
-                            <span className='block text-accent-gold font-serif italic'>Impacting Our World</span>
-                        </h1>
+                    {/* Heading */}
+                    <h1 className='text-4xl leading-tight md:text-5xl lg:text-6xl font-black font-serif lg:leading-tight'>
+                        Raising Redeemed People
+                        <span className='block text-accent-gold italic mt-1 whitespace-nowrap'>Impacting Our World</span>
+                    </h1>
 
-                        <p className='text-lg leading-relaxed md:text-2xl lg:text-3xl font-light max-w-2xl mx-auto md:mx-0 font-sans'>
-                            A place of worship, transformation, and community through Jesus Christ
-                        </p>
+                    {/* Subtext */}
+                    <p className='text-base md:text-lg text-white/80 font-sans leading-relaxed md:whitespace-nowrap'>
+                        A place of worship and transformation through Jesus Christ
+                    </p>
 
-                        <div className='grid w-fit grid-cols-1 md:grid-cols-2 gap-4 mx-auto md:mx-0 mt-8 lg:mt-10'>
-                            <Button size={"lg"}
-                                className="bg-accent-gold border border-accent-gold hover:bg-transparent hover:border-accent-gold group transition-all duration-500 shadow-lg hover:shadow-xl text-lg px-8 py-6">
+                    {/* Buttons */}
+                    <div className='flex flex-wrap gap-4 pt-2'>
+                        <Button size="lg"
+                            className="relative bg-accent-gold border border-accent-gold hover:bg-transparent hover:border-white group transition-all duration-500 shadow hover:shadow-[0_0_20px_rgba(255,255,255,0.3)] hover:scale-105 active:scale-95">
+                            <Link href="/events" className='uppercase text-sm font-semibold text-deep-navy flex items-center gap-x-2 group-hover:text-white font-sans'>
+                                Join us this Sunday
+                                <ArrowRight className="group-hover:translate-x-2 transition-transform duration-300" />
+                            </Link>
+                        </Button>
 
-                                <Link href={"/events"} className='uppercase text-base font-semibold text-deep-navy flex gap-x-2 group-hover:text-accent-gold items-center'>
-                                    Join Us This Sunday
-                                    <ArrowRight className="group-hover:translate-x-2 transition duration-500" />
-                                </Link>
-                            </Button>
-
-                            <Button size="lg"
-                                className="uppercase border-2 border-white/80 bg-white/10 backdrop-blur-sm shadow-lg hover:bg-accent-gold hover:text-deep-navy hover:border-accent-gold transition-all duration-500 text-lg px-8 py-6">
-                                <Link href="/contact" className='text-base uppercase font-semibold flex gap-x-2 items-center'>
-                                    Plan Your Visit
-                                    <MapPin className="w-5 h-5" />
-                                </Link>
-                            </Button>
-                        </div>
-
-                        <div className='flex gap-x-3 items-center justify-center md:justify-start mt-8 lg:mt-10'>
-                            {
-                                images.map((img, index) => (
-                                    <img
-                                        key={index}
-                                        src={img}
-                                        alt={`member-${index + 1}`}
-                                        className={`w-14 h-14 lg:w-16 lg:h-16 object-cover rounded-full border-2 border-white/50 ${index !== 0 && '-ml-6'} hover:scale-110 transition-transform duration-300`}
-                                    />
-                                ))
-                            }
-                            <p className='text-base md:text-lg lg:text-xl text-left font-medium font-sans'>Join our growing family of believers</p>
-                        </div>
+                        <Button size="lg"
+                            className="uppercase border border-white/70 bg-transparent shadow hover:bg-accent-gold hover:text-deep-navy hover:border-accent-gold hover:shadow-[0_0_20px_rgba(212,175,55,0.4)] hover:scale-105 active:scale-95 transition-all duration-500 group">
+                            <a href="#map-section" className='text-sm uppercase font-semibold flex items-center gap-x-2 font-sans'>
+                                Plan your visit
+                                <MapPin size={16} className="group-hover:animate-bounce" />
+                            </a>
+                        </Button>
                     </div>
-                </div>
 
-                {/* Bottom Wave */}
-                <div className="absolute -bottom-1 md:-bottom-2 left-0 w-full overflow-hidden block">
-                    <WaveSvg />
+                    {/* Slide indicators */}
+                    <div className='flex items-center gap-2 pt-2'>
+                        {slides.map((_, index) => (
+                            <button
+                                key={index}
+                                onClick={() => setCurrent(index)}
+                                className={`h-1.5 rounded-full transition-all duration-300 ${index === current ? 'w-6 bg-accent-gold' : 'w-1.5 bg-white/40'}`}
+                                aria-label={`Go to slide ${index + 1}`}
+                            />
+                        ))}
+                    </div>
+
+                    {/* Member avatars */}
+                    <div className='flex items-center gap-x-3 pt-2'>
+                        <div className='flex'>
+                            {images.map((img, index) => (
+                                <img
+                                    key={index}
+                                    src={img}
+                                    alt={`member-${index + 1}`}
+                                    className={`w-10 h-10 lg:w-12 lg:h-12 object-cover rounded-full ring-2 ring-deep-purple ${index !== 0 ? '-ml-3' : ''}`}
+                                />
+                            ))}
+                        </div>
+                        <p className='text-sm text-white/80 font-sans'>Be a part of our growing family</p>
+                    </div>
+
                 </div>
+            </div>
+
+            {/* Bottom Wave */}
+            <div className="absolute -bottom-3 md:-bottom-9 left-0 w-full overflow-hidden">
+                <WaveSvg />
             </div>
         </section>
     )

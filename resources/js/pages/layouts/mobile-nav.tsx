@@ -1,6 +1,7 @@
 import { navLinks } from '@/types/data'
 import { Link, usePage } from '@inertiajs/react'
 import { X } from 'lucide-react'
+import { Button } from '@/components/ui/button'
 import React from 'react'
 
 
@@ -29,8 +30,8 @@ const MobileNav: React.FC<MobileNavProp> = ({ isModalOpen, closeMenu }) => {
                     <ul className='space-y-4 mt-3 pl-7'>
                         {navLinks.map(({ title, href }) => (
                             <li key={title}>
-                                <Link 
-                                    href={href} 
+                                <Link
+                                    href={href}
                                     onClick={closeMenu}
                                     className={`text-lg font-normal block py-1 transition-colors ${url === href ? 'text-accent-gold font-semibold' : 'text-white hover:text-accent'}`}
                                 >
@@ -39,6 +40,24 @@ const MobileNav: React.FC<MobileNavProp> = ({ isModalOpen, closeMenu }) => {
                             </li>
                         ))}
                     </ul>
+
+                    <div className='mt-6 pl-7'>
+                        <Button
+                            asChild
+                            className="w-full bg-red-600 text-white hover:bg-red-500 font-semibold shadow-lg transition-all duration-300"
+                        >
+                            <a
+                                href="https://www.youtube.com/@rpcassembly4969"
+                                target="_blank"
+                                rel="noopener noreferrer"
+                                className="flex items-center justify-center gap-2"
+                                onClick={closeMenu}
+                            >
+                                <span className="w-2 h-2 rounded-full bg-white animate-ping" />
+                                Watch Live
+                            </a>
+                        </Button>
+                    </div>
                 </div>
             </div>
         </nav>

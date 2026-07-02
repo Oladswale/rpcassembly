@@ -1,40 +1,57 @@
-import { SectionHeader } from '@/components/ui/section-header'
-import HorizontalLine from '@/components/ui/horizontal-line'
 import { Target, Eye } from 'lucide-react'
+
+const cards = [
+    {
+        icon: Target,
+        label: 'Our Mission',
+        color: '#7C3AED',
+        text: 'To raise redeemed people who will impact their world through the transformative power of the gospel of Jesus Christ, building a community of faith, love, and excellence.',
+    },
+    {
+        icon: Eye,
+        label: 'Our Vision',
+        color: '#D4AF37',
+        text: 'A generation of redeemed people living a life of purpose, transforming families, communities, and nations for the glory of God.',
+    },
+]
 
 const MissionVision = () => {
     return (
-        <section className='bg-white'>
-            <div className='max-w-7xl mx-auto'>
-                <div className='grid md:grid-cols-2 gap-8 lg:gap-12'>
-                    <div className='bg-gray-50 rounded-xl p-6 md:p-8 lg:p-10 border border-gray-100'>
-                        <div className='w-12 h-12 rounded-full bg-royal-purple/10 flex items-center justify-center mb-4'>
-                            <Target size={24} className='text-royal-purple' />
-                        </div>
-                        <SectionHeader>
-                            Our <span className='text-royal-purple'>Mission</span>
-                        </SectionHeader>
-                        <HorizontalLine className='mt-2 mb-4' />
-                        <p className='text-base md:text-lg text-gray-600 leading-relaxed'>
-                            To raise redeemed people who will impact their world through the
-                            transformative power of the gospel of Jesus Christ, building a community
-                            of faith, love, and excellence.
-                        </p>
-                    </div>
+        <section className='py-16 lg:py-24 bg-white'>
+            <div className='max-w-7xl mx-auto px-6 lg:px-8'>
+                <div className='grid md:grid-cols-2 gap-6 lg:gap-10'>
+                    {cards.map(({ icon: Icon, label, color, text }) => (
+                        <div
+                            key={label}
+                            className='group relative rounded-2xl bg-[#0f0a1e] border border-white/10 p-8 lg:p-10 overflow-hidden transition-all duration-500 hover:border-white/25 hover:-translate-y-1 hover:shadow-2xl'
+                        >
+                            {/* Glow */}
+                            <div
+                                className='absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-500 rounded-2xl'
+                                style={{ background: `radial-gradient(circle at 0% 0%, ${color}25, transparent 60%)` }}
+                            />
 
-                    <div className='bg-gray-50 rounded-xl p-6 md:p-8 lg:p-10 border border-gray-100'>
-                        <div className='w-12 h-12 rounded-full bg-royal-purple/10 flex items-center justify-center mb-4'>
-                            <Eye size={24} className='text-royal-purple' />
+                            {/* Bottom accent */}
+                            <div
+                                className='absolute bottom-0 left-0 h-0.5 w-0 group-hover:w-full transition-all duration-500 rounded-full'
+                                style={{ backgroundColor: color }}
+                            />
+
+                            <div className='relative z-10'>
+                                <div
+                                    className='w-12 h-12 rounded-xl flex items-center justify-center mb-6'
+                                    style={{ backgroundColor: `${color}20`, border: `1px solid ${color}40` }}
+                                >
+                                    <Icon size={22} style={{ color }} />
+                                </div>
+
+                                <h3 className='text-xl font-bold text-white mb-3'>{label}</h3>
+                                <p className='text-white/55 leading-relaxed group-hover:text-white/75 transition-colors duration-300'>
+                                    {text}
+                                </p>
+                            </div>
                         </div>
-                        <SectionHeader>
-                            Our <span className='text-royal-purple'>Vision</span>
-                        </SectionHeader>
-                        <HorizontalLine className='mt-2 mb-4' />
-                        <p className='text-base md:text-lg text-gray-600 leading-relaxed'>
-                            A generation of redeemed people living a life of purpose,
-                            transforming families, communities, and nations for the glory of God.
-                        </p>
-                    </div>
+                    ))}
                 </div>
             </div>
         </section>

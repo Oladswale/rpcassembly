@@ -1,7 +1,6 @@
 import { Link } from '@inertiajs/react'
 import { navLinks } from '@/types/data'
-import { MapPin, Phone, Mail, Globe, MessageCircle, Image, Play } from 'lucide-react'
-import CustomImage from '@/components/ui/custom-image'
+import { MapPin, Phone, Mail, Globe } from 'lucide-react'
 import { Facebook, TikTok, WhatsApp, YouTube } from '@/assets/svgs/social-icons'
 
 
@@ -43,7 +42,7 @@ const Footer = () => {
                     {/* col 1 */}
                     <div>
                         <Link href={"/"}>
-                            <CustomImage
+                            <img
                                 src='/rpclogo.png'
                                 alt='rpc logo'
                                 loading='eager'

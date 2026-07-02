@@ -39,15 +39,20 @@ const Navbar = () => {
 
             <div className="relative ml-8 group hidden lg:block ">
                 <div className="absolute -inset-0.5 bg-gradient-to-r from-red-600 to-pink-600 rounded-md blur opacity-60 group-hover:opacity-100 transition duration-1000 group-hover:duration-200 animate-[pulse_2s_infinite]" />
-                
-                <Button 
-                    asChild 
+
+                <Button
+                    asChild
                     className="relative bg-red-600 text-white hover:bg-red-500 font-semibold shadow-lg transition-all duration-300 hover:scale-105 active:scale-95"
                 >
-                    <Link href="/sermons" className="flex items-center gap-2">
+                    <a
+                        href="https://www.youtube.com/@rpcassembly4969"
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="flex items-center gap-2"
+                    >
                         <span className="w-2 h-2 rounded-full bg-white animate-ping" />
                         Watch Live
-                    </Link>
+                    </a>
                 </Button>
             </div>
         </nav>

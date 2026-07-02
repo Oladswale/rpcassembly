@@ -14,6 +14,7 @@ export default function About() {
                 <PageHero
                     title='About Us'
                     description='We are a redeemed people of Christ Assembly dedicated to winning souls, building believers and sending them to impact the world'
+                    src='/worship.jpg'
                 />
 
                 <MissionVision />

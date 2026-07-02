@@ -1,10 +1,20 @@
-import React from 'react'
+import React, { useState, useEffect } from 'react'
 import { ArrowRight } from 'lucide-react'
 import { Button } from '@/components/ui/button'
 import { router } from '@inertiajs/react'
 import { SectionHeader } from '@/components/ui/section-header'
 
 const AboutSection = () => {
+    const [currentImage, setCurrentImage] = useState(0)
+    const communityImages = ['/comm1.jpg', '/comm2.jpg', '/comm3.jpg', '/comm4.jpg']
+
+    useEffect(() => {
+        const interval = setInterval(() => {
+            setCurrentImage((prev) => (prev + 1) % communityImages.length)
+        }, 4000) // Change image every 4 seconds
+
+        return () => clearInterval(interval)
+    }, [])
 
     return (
         <section className='py-16 lg:py-24 bg-soft-beige'>
@@ -49,15 +59,35 @@ const AboutSection = () => {
                     {/* right */}
                     <div className='order-1 lg:order-2'>
                         <div className='relative'>
-                            <div className='absolute -inset-4 bg-royal-purple/10 rounded-2xl transform rotate-3'></div>
-                            <img 
-                                src="/church-about.jpg" 
-                                alt="RPC Assembly Community" 
-                                className='relative rounded-2xl shadow-2xl w-full h-auto object-cover'
-                                onError={(e) => {
-                                    e.currentTarget.src = "data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='600' height='400' viewBox='0 0 600 400'%3E%3Crect fill='%23f5f0e8' width='600' height='400'/%3E%3Ctext fill='%236c2bd9' font-family='serif' font-size='24' x='50%25' y='50%25' text-anchor='middle' dy='.3em'%3ECommunity Image%3C/text%3E%3C/svg%3E"
-                                }}
-                            />
+                            <div className='absolute -inset-4 bg-deep-purple rounded-2xl transform rotate-3'></div>
+                            <div className='relative rounded-2xl shadow-2xl w-full h-auto overflow-hidden aspect-[4/3]'>
+                                {communityImages.map((img, index) => (
+                                    <img
+                                        key={index}
+                                        src={img}
+                                        alt={`RPC Assembly Community ${index + 1}`}
+                                        className={`absolute inset-0 w-full h-full object-cover transition-opacity duration-1000 ease-in-out ${
+                                            index === currentImage ? 'opacity-100' : 'opacity-0'
+                                        }`}
+                                        onError={(e) => {
+                                            e.currentTarget.style.display = 'none'
+                                        }}
+                                    />
+                                ))}
+                            </div>
+                            {/* Slideshow indicators */}
+                            <div className='flex gap-2 justify-center mt-4'>
+                                {communityImages.map((_, index) => (
+                                    <button
+                                        key={index}
+                                        onClick={() => setCurrentImage(index)}
+                                        className={`w-3 h-3 rounded-full transition-all duration-300 ${
+                                            index === currentImage ? 'bg-royal-purple w-8' : 'bg-deep-purple/40'
+                                        }`}
+                                        aria-label={`Go to slide ${index + 1}`}
+                                    />
+                                ))}
+                            </div>
                         </div>
                     </div>
                 </div>

@@ -13,6 +13,7 @@ export default function Ministries() {
                     title='Ministries'
                     description="At RPC Assembly, we believe ministry is not just something we do, it's who we are. Discover the
                     ministries where you can grow, serve and make an impact for God's kingdom"
+                    src='/youth.jpg'
                 />
 
                 <MinistriesSection />
