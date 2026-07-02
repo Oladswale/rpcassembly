@@ -132,7 +132,7 @@ export const events: Array<EventsType> = [
     },
     {
         id: 8,
-        image: "/events/thanksgiving.jpg",
+        image: Event1,
         title: "Annual Thanksgiving Service",
         date: "Dec 14, 2025",
         time: "9:00 AM",

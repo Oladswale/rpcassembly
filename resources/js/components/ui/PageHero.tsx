@@ -4,6 +4,7 @@ import { ChevronRight } from 'lucide-react'
 import HorizontalLine from './horizontal-line'
 import CustomImage from './custom-image'
 import WaveSvg from '@/assets/svgs/wave'
+import { cn } from '@/utils'
 
 
 interface HeroProps {
@@ -11,11 +12,12 @@ interface HeroProps {
     description?: string
     src?: string,
     breadCrumb?: string
+    className? : string
 }
 
-const PageHero: React.FC<HeroProps> = ({ title, description, src, breadCrumb }) => {
+const PageHero: React.FC<HeroProps> = ({ title, description, src, breadCrumb, className }) => {
     return (
-        <section className='relative overflow-hidden pt-15 pb-20'>
+        <section className={cn('relative overflow-hidden pt-15 pb-20', className)}>
 
             <div className='max-w-7xl mx-auto h-full w-full'>
                 <CustomImage

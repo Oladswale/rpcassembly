@@ -9,3 +9,7 @@ Route::inertia('/ministries', 'Ministries')->name('ministries');
 Route::inertia('/sermons', 'Sermons')->name('sermons');
 Route::inertia('/events', 'Events')->name('events');
 
+Route::fallback(function () {
+    return \Inertia\Inertia::render('Error', ['status' => 404]);
+});
+
