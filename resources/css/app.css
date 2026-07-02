@@ -1,11 +1,15 @@
 @import 'tailwindcss';
+@import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600;700&family=Lato:wght@300;400;500;600;700&display=swap');
 
 @source '../views';
 @source '../../vendor/laravel/framework/src/Illuminate/Pagination/resources/views/*.blade.php';
 
 @theme {
+    --font-serif:
+        'Cormorant Garamond', Georgia, serif;
+    
     --font-sans:
-        'Instrument Sans', ui-sans-serif, system-ui, sans-serif,
+        'Lato', ui-sans-serif, system-ui, sans-serif,
         'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol',
         'Noto Color Emoji';
 
@@ -15,12 +19,15 @@
         --color-deep-navy : #0f172a;
         --color-accent-gold : #facc15;
         --color-accent-orange : #f59e0b;
+        --color-warm-cream : #faf8f5;
+        --color-soft-beige : #f5f0e8;
 
         /* responsiveness */
         --breakpoint-xs : 24rem;
 
         /* animation */
         --animate-pulse-fast : pulse 1.7s ease-in-out infinite;
+        --animate-fade-in-up : fadeInUp 0.8s ease-out;
 }
 
 @layer base {

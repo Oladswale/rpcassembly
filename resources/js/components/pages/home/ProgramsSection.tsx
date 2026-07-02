@@ -4,10 +4,14 @@ import React from 'react'
 
 const ProgramsSection = () => {
     return (
-        <section className='py-0! bg-gray-100 '>
+        <section className='py-16 lg:py-24 bg-warm-cream -mt-8 relative z-20'>
             <div className='max-w-7xl mx-auto'>
-                <div className='bg-white text-black p-7 w-full rounded-xl shadow'>
-                    <div className='grid grid-cols-1 xs:grid-cols-2 lg:grid-cols-4 gap-5 '>
+                <div className='bg-white text-deep-navy p-8 lg:p-12 w-full rounded-2xl shadow-xl'>
+                    <div className='text-center mb-10'>
+                        <h2 className='text-3xl lg:text-4xl font-serif font-bold text-royal-purple mb-3'>Service Times</h2>
+                        <p className='text-lg font-sans text-gray-600'>Join us for worship and fellowship</p>
+                    </div>
+                    <div className='grid grid-cols-1 xs:grid-cols-2 lg:grid-cols-4 gap-6 lg:gap-8'>
                         {
                             serviceTimes.map((service) => (
                                 <InfoCard key={service.title} {...service} />

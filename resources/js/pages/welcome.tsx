@@ -6,6 +6,7 @@ import AboutSection from '@/components/pages/home/AboutSection';
 import Hero from '@/components/pages/home/hero';
 import HomeEventSection from '@/components/pages/home/HomeEventSection';
 import SermonSection from '@/components/pages/home/SermonSection';
+import MinistriesSection from '@/components/pages/home/MinistriesSection';
 import CtaSection from '@/components/pages/home/CtaSection';
 
 
@@ -18,6 +19,7 @@ export default function Welcome() {
                 <Hero />
                 <ProgramsSection />
                 <AboutSection />
+                <MinistriesSection />
                 <HomeEventSection />
                 <SermonSection />
                 {/* <CtaSection /> */}
