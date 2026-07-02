@@ -5,23 +5,23 @@ import CustomImage from '@/components/ui/custom-image'
 import { Facebook, TikTok, WhatsApp, YouTube } from '@/assets/svgs/social-icons'
 
 
-const churchPhone = import.meta.env.VITE_CHURCH_PHONE.replace(/\s+/g, '')
+const churchPhone = (import.meta.env.VITE_CHURCH_PHONE || '').replace(/\s+/g, '')
 const message = encodeURIComponent("Hello. I visited your website and would like to learn more about the church. Thank you and God bless")
 
 const socialLinks = [
-    { icon: Facebook, href: import.meta.env.VITE_CHURCH_FACEBOOK },
-    { icon: TikTok, href: import.meta.env.VITE_CHURCH_TIKTOK },
-    { icon: YouTube, href: import.meta.env.VITE_CHURCH_YOUTUBE },
+    { icon: Facebook, href: import.meta.env.VITE_CHURCH_FACEBOOK || '#' },
+    { icon: TikTok, href: import.meta.env.VITE_CHURCH_TIKTOK || '#' },
+    { icon: YouTube, href: import.meta.env.VITE_CHURCH_YOUTUBE || '#' },
     { icon: WhatsApp, href: `https://wa.me/${churchPhone}?text=${message}`},
 ]
 
-const churchAddress = import.meta.env.VITE_CHURCH_ADDRESS
-const churchWebsite = import.meta.env.VITE_CHURCH_WEBSITE
-const churchEmail = import.meta.env.VITE_CHURCH_EMAIL
+const churchAddress = import.meta.env.VITE_CHURCH_ADDRESS || 'Church Address'
+const churchWebsite = import.meta.env.VITE_CHURCH_WEBSITE || 'https://yourchurch.com'
+const churchEmail = import.meta.env.VITE_CHURCH_EMAIL || 'info@yourchurch.com'
 
 const contactInfo = [
     { icon: MapPin, action: `https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(churchAddress)}`, value: churchAddress },
-    { icon: Phone, action: `tel:${churchPhone}`, value: churchPhone.replace(/(\d{3})(\d{3})(\d{3})(\d{4})/, '$1 $2 $3 $4') },
+    { icon: Phone, action: `tel:${churchPhone}`, value: churchPhone ? churchPhone.replace(/(\d{3})(\d{3})(\d{3})(\d{4})/, '$1 $2 $3 $4') : churchPhone },
     { icon: Mail, action: `mailto:${churchEmail}`, value:  churchEmail},
     { icon: Globe, action: churchWebsite, value:  churchWebsite},
 ]
