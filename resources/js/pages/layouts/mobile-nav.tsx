@@ -1,8 +1,8 @@
 import { navLinks } from '@/types/data'
 import { Link, usePage } from '@inertiajs/react'
-import { X } from 'lucide-react'
+import { X, ChevronDown, ChevronRight } from 'lucide-react'
 import { Button } from '@/components/ui/button'
-import React from 'react'
+import React, { useState } from 'react'
 
 
 interface MobileNavProp {
@@ -14,7 +14,12 @@ const MobileNav: React.FC<MobileNavProp> = ({ isModalOpen, closeMenu }) => {
     if (!isModalOpen) return null;
 
     const { url } = usePage();
-    
+    const [openDropdown, setOpenDropdown] = useState<string | null>(null);
+
+    const toggleDropdown = (title: string) => {
+        setOpenDropdown(openDropdown === title ? null : title);
+    };
+
     return (
         <nav className='flex md:hidden fixed inset-0 w-full h-full z-999 overflow-hidden'>
             {/* Backdrop click closer */}
@@ -26,19 +31,59 @@ const MobileNav: React.FC<MobileNavProp> = ({ isModalOpen, closeMenu }) => {
                     <button onClick={closeMenu} className="focus:outline-none">
                         <X size={30} className='text-white cursor-pointer' />
                     </button>
-                    
+
                     <ul className='space-y-4 mt-3 pl-7'>
-                        {navLinks.map(({ title, href }) => (
-                            <li key={title}>
-                                <Link
-                                    href={href}
-                                    onClick={closeMenu}
-                                    className={`text-lg font-normal block py-1 transition-colors ${url === href ? 'text-accent-gold font-semibold' : 'text-white hover:text-accent'}`}
-                                >
-                                    {title}
-                                </Link>
-                            </li>
-                        ))}
+                        {navLinks.map((item) => {
+                            const hasChildren = item.children && item.children.length > 0;
+                            const isDropdownOpen = openDropdown === item.title;
+
+                            return (
+                                <li key={item.title}>
+                                    {hasChildren ? (
+                                        <div>
+                                            <div className="flex items-center justify-between">
+                                                <Link
+                                                    href={item.href}
+                                                    onClick={closeMenu}
+                                                    className={`text-lg font-normal block py-1 transition-colors ${url === item.href ? 'text-accent-gold font-semibold' : 'text-white hover:text-accent'}`}
+                                                >
+                                                    {item.title}
+                                                </Link>
+                                                <button
+                                                    onClick={() => toggleDropdown(item.title)}
+                                                    className="text-white hover:text-accent"
+                                                >
+                                                    {isDropdownOpen ? <ChevronDown size={20} /> : <ChevronRight size={20} />}
+                                                </button>
+                                            </div>
+                                            {isDropdownOpen && (
+                                                <ul className="ml-4 mt-2 space-y-2">
+                                                    {item.children?.map((child) => (
+                                                        <li key={child.title}>
+                                                            <Link
+                                                                href={child.href || '#'}
+                                                                onClick={closeMenu}
+                                                                className="text-base font-normal block py-1 transition-colors text-white/80 hover:text-accent"
+                                                            >
+                                                                {child.title}
+                                                            </Link>
+                                                        </li>
+                                                    ))}
+                                                </ul>
+                                            )}
+                                        </div>
+                                    ) : (
+                                        <Link
+                                            href={item.href}
+                                            onClick={closeMenu}
+                                            className={`text-lg font-normal block py-1 transition-colors ${url === item.href ? 'text-accent-gold font-semibold' : 'text-white hover:text-accent'}`}
+                                        >
+                                            {item.title}
+                                        </Link>
+                                    )}
+                                </li>
+                            );
+                        })}
                     </ul>
 
                     <div className='mt-6 pl-7'>
