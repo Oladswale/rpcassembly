@@ -21,6 +21,7 @@ Route::inertia('/about', 'About')->name('history');
 Route::inertia('/contact', 'Contact')->name('contact');
 Route::inertia('/ministries', 'Ministries')->name('ministries');
 Route::inertia('/sermons', 'Sermons')->name('sermons');
+Route::inertia('/first-timer', 'FirstTimer')->name('first-timer');
 Route::get('/events', function () {
     $events = \App\Models\Event::orderBy('date')->get()->map(fn($e) => [
         'id'          => $e->id,

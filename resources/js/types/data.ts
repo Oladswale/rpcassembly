@@ -21,7 +21,13 @@ export const navLinks: NavItem[] = [
     { title: "About Us", href: "/about" },
     { title: "Ministries", href: "/ministries" },
     { title: "Sermons", href: "/sermons" },
-    { title: "Events", href: "/events" },
+    {
+        title: "Events",
+        href: "/events",
+        children: [
+            { title: "First Timer", href: "/first-timer" },
+        ],
+    },
     { title: "Contact", href: "/contact" },
 ];
 
