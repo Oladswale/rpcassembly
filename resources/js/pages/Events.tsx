@@ -1,7 +1,13 @@
+import type { EventClickArg } from '@fullcalendar/core';
 import { Head, usePage } from '@inertiajs/react';
-import PublicLayout from '@/pages/layouts/appLayout';
 import { MapPin, Clock, Calendar } from 'lucide-react';
+import { useCallback, useState, useMemo } from 'react';
+import EventCalendar from '@/components/ui/event-calendar';
+import EventModal from '@/components/ui/event-modal';
 import PageHero from '@/components/ui/PageHero';
+import { churchEvents, convertToFullCalendarEvents } from '@/lib/events';
+import PublicLayout from '@/pages/layouts/appLayout';
+import type { CalendarEventData } from '@/types/events';
 
 type Event = {
     id: number;
@@ -15,6 +21,48 @@ type Event = {
 
 export default function Events() {
     const { events } = usePage<{ events: Event[] }>().props;
+
+    const [viewYear, setViewYear] = useState(new Date().getFullYear());
+    const calendarEvents = useMemo(
+        () => convertToFullCalendarEvents(churchEvents, viewYear),
+        [viewYear],
+    );
+
+    const handleViewYearChange = useCallback((year: number) => {
+        setViewYear(year);
+    }, []);
+
+    const [selectedEvent, setSelectedEvent] =
+        useState<CalendarEventData | null>(null);
+    const [isModalOpen, setIsModalOpen] = useState(false);
+    const [isClosing, setIsClosing] = useState(false);
+
+    const handleEventClick = useCallback((arg: EventClickArg) => {
+        const props = arg.event.extendedProps;
+
+        setSelectedEvent({
+            title: arg.event.title,
+            start: arg.event.startStr,
+            end: arg.event.endStr,
+            description: props.description as string | undefined,
+            location: props.location as string | undefined,
+            duration: props.duration as number | undefined,
+            color: props.color as string | undefined,
+        });
+
+        setIsModalOpen(true);
+        setIsClosing(false);
+    }, []);
+
+    const handleCloseModal = useCallback(() => {
+        setIsClosing(true);
+
+        setTimeout(() => {
+            setIsModalOpen(false);
+            setIsClosing(false);
+            setSelectedEvent(null);
+        }, 200);
+    }, []);
 
     return (
         <PublicLayout>
@@ -63,6 +111,38 @@ export default function Events() {
                     )}
                     </div>
                 </div>
+
+                <section className="bg-warm-cream">
+                    <div className="mx-auto max-w-7xl pb-20 pt-14 ">
+                        <div className="mb-12 text-center">
+                            <h2 className="font-serif text-3xl font-bold text-deep-navy md:text-4xl">
+                                Church Calendar{' '}
+                                <span className="text-royal-purple">
+                                    {viewYear}
+                                </span>
+                            </h2>
+                            <div className="mx-auto mt-3 h-1 w-16 rounded-full bg-accent-gold" />
+                            <p className="mx-auto mt-4 max-w-2xl text-base text-gray-600">
+                                Explore our annual schedule of services,
+                                programmes, and special gatherings. Click on any
+                                event to learn more.
+                            </p>
+                        </div>
+
+                        <EventCalendar
+                            events={calendarEvents}
+                            onEventClick={handleEventClick}
+                            onViewYearChange={handleViewYearChange}
+                        />
+                    </div>
+                </section>
+
+                <EventModal
+                    event={selectedEvent}
+                    isOpen={isModalOpen}
+                    isClosing={isClosing}
+                    onClose={handleCloseModal}
+                />
             </main>
         </PublicLayout>
     );

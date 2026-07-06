@@ -42,15 +42,15 @@ export const ministers: MinisterType[] = [
     {
         name: "Pastor Olufisayo",
         role: "Pastor",
-        image: "/dad.jpg"
+        image: "/dad.jpeg"
     },
     {
         name: "Lady Evangelist Olufisayo",
         role: "Lady Evangelist",
-        image: "/mum.jpg"
+        image: "/mum.jpeg"
     },
     {
-        name: "Evangelist Kay",
+        name: "Evangelist Thomas",
         role: "Evangelist",
         image: "/eva.jpg"
     },

@@ -32,6 +32,305 @@
 
 @layer base {
     section, footer {
-        @apply px-6 md:px-12 lg:px-16 py-7 
+        @apply px-6 md:px-12 lg:px-16 py-7
     }
+}
+
+/* ── FullCalendar theme ────────────────────────────── */
+
+.rpc-calendar-wrapper {
+    --fc-page-bg-color: #ffffff;
+    --fc-border-color: #e5e7eb;
+    --fc-today-bg-color: #faf8f5;
+    --fc-event-bg-color: #6c2bd9;
+    --fc-event-border-color: #6c2bd9;
+    --fc-event-text-color: #ffffff;
+    --fc-now-indicator-color: #6c2bd9;
+
+    --fc-button-text-color: #6c2bd9;
+    --fc-button-bg-color: transparent;
+    --fc-button-border-color: #6c2bd9;
+    --fc-button-hover-bg-color: #6c2bd9;
+    --fc-button-hover-border-color: #6c2bd9;
+    --fc-button-hover-text-color: #ffffff;
+    --fc-button-active-bg-color: #4b0082;
+    --fc-button-active-border-color: #4b0082;
+
+    font-family: 'Lato', ui-sans-serif, system-ui, sans-serif;
+}
+
+.rpc-calendar-wrapper .fc {
+    font-size: 0.875rem;
+}
+
+.rpc-calendar-wrapper .fc-toolbar-title {
+    font-family: 'Cormorant Garamond', Georgia, serif;
+    font-size: 1.5rem !important;
+    font-weight: 700;
+    color: #0f172a;
+}
+
+.rpc-calendar-wrapper .fc-button {
+    border-radius: 0.5rem;
+    font-weight: 500;
+    font-size: 0.8125rem;
+    padding: 0.375rem 0.75rem;
+    transition: all 0.2s ease;
+}
+
+.rpc-calendar-wrapper .fc-button-primary {
+    color: #6c2bd9;
+    background-color: transparent;
+    border-color: #6c2bd9;
+}
+
+.rpc-calendar-wrapper .fc-button-primary:hover {
+    background-color: #6c2bd9;
+    border-color: #6c2bd9;
+    color: #ffffff;
+}
+
+.rpc-calendar-wrapper .fc-button-primary:hover .fc-icon {
+    color: #ffffff;
+}
+
+.rpc-calendar-wrapper .fc-button-primary:not(:disabled):active,
+.rpc-calendar-wrapper .fc-button-primary:not(:disabled).fc-button-active {
+    background-color: #4b0082;
+    border-color: #4b0082;
+    color: #ffffff;
+}
+
+.rpc-calendar-wrapper .fc-daygrid-day {
+    border-radius: 0;
+    transition: background-color 0.15s ease;
+}
+
+.rpc-calendar-wrapper .fc-daygrid-day-frame {
+    padding: 2px;
+}
+
+.rpc-calendar-wrapper .fc-daygrid-day-top {
+    padding: 2px 4px;
+}
+
+.rpc-calendar-wrapper .fc-daygrid-day-number {
+    font-size: 0.8125rem;
+    font-weight: 500;
+    color: #374151;
+    padding: 4px;
+    text-decoration: none;
+}
+
+.rpc-calendar-wrapper .fc-day-today .fc-daygrid-day-number {
+    background-color: #6c2bd9;
+    color: #ffffff;
+    border-radius: 9999px;
+    width: 1.75rem;
+    height: 1.75rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: 700;
+}
+
+.rpc-calendar-wrapper .fc-col-header-cell {
+    padding: 8px 0;
+}
+
+.rpc-calendar-wrapper .fc .fc-col-header-cell-cushion {
+    font-family: 'Lato', ui-sans-serif, system-ui, sans-serif;
+    font-size: 0.75rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    color: #ffffff;
+    text-decoration: none;
+}
+
+.rpc-calendar-wrapper .fc-daygrid-event {
+    border-radius: 6px;
+    padding: 2px 6px;
+    margin: 1px 2px;
+    font-size: 0.75rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: transform 0.15s ease, box-shadow 0.15s ease;
+    border: none;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.rpc-calendar-wrapper .fc-daygrid-event:hover {
+    transform: translateY(-1px);
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
+}
+
+.rpc-calendar-wrapper .fc-daygrid-event .fc-event-title {
+    font-weight: 600;
+    padding: 0;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.rpc-calendar-wrapper .fc-more-link {
+    font-size: 0.75rem;
+    font-weight: 600;
+    color: #6c2bd9;
+    padding: 0 4px;
+}
+
+.rpc-calendar-wrapper .fc-more-link:hover {
+    text-decoration: underline;
+}
+
+.rpc-calendar-wrapper .fc-day-other .fc-daygrid-day-top {
+    opacity: 0.35;
+}
+
+.rpc-calendar-wrapper .fc-scrollgrid {
+    border-radius: 0.75rem;
+    overflow: hidden;
+    border: 1px solid #e5e7eb;
+}
+
+.rpc-calendar-wrapper .fc-scrollgrid td:last-child {
+    border-right: none;
+}
+
+.rpc-calendar-wrapper .fc-scrollgrid tr:last-child td {
+    border-bottom: none;
+}
+
+.rpc-calendar-wrapper .fc-daygrid-day-events {
+    min-height: 1.5rem;
+}
+
+.rpc-calendar-wrapper .fc-non-business {
+    background-color: transparent;
+}
+
+.rpc-calendar-wrapper .fc-day-other {
+    background-color: #f9fafb;
+}
+
+/* Multi-month view */
+
+.rpc-calendar-wrapper .fc-multimonth-month {
+    border-radius: 0.75rem;
+    overflow: hidden;
+    border: 1px solid #e5e7eb;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.05);
+    background: #ffffff;
+}
+
+.rpc-calendar-wrapper .fc-multimonth-header {
+    background: #6c2bd9;
+    padding: 10px 14px !important;
+    text-align: center;
+    margin-top : 16px;
+    margin-bottom : 16px;
+    border-radius : 0.75rem 0.75rem 0 0;
+}
+
+.rpc-calendar-wrapper .fc-multimonth-header .fc-multimonth-title {
+    font-family: 'Cormorant Garamond', Georgia, serif;
+    font-size: 1.125rem;
+    font-weight: 700;
+    color: #ffffff;
+    letter-spacing: 0.02em;
+}
+
+.rpc-calendar-wrapper .fc-multimonth-singlecol .fc-multimonth-month {
+    margin-bottom: 1.5rem;
+}
+
+/* gap between months */
+.rpc-calendar-wrapper .fc-multimonth-multicol {
+    row-gap: 2.5rem;
+}
+.rpc-calendar-wrapper .fc-multimonth-multicol .fc-multimonth-month {
+    box-shadow: 0 0 0 12px #faf8f5, 0 1px 3px rgba(0, 0, 0, 0.05);
+}
+
+/* compact day-number cells inside multi-month */
+.rpc-calendar-wrapper .fc-multimonth-daygrid .fc-daygrid-day-frame {
+    padding: 0;
+    min-height: 0;
+}
+
+.rpc-calendar-wrapper .fc-multimonth-daygrid .fc-daygrid-day-top {
+    padding: 1px 2px;
+    line-height: 1.2;
+}
+
+.rpc-calendar-wrapper .fc-multimonth-daygrid .fc-daygrid-day-number {
+    font-size: 0.6875rem;
+    padding: 1px;
+}
+
+.rpc-calendar-wrapper .fc-multimonth-daygrid .fc-daygrid-day-events {
+    min-height: 0;
+}
+
+.fc-header-toolbar .fc-toolbar {
+    margin-top : 1.5em
+}
+/* Responsive typography */
+
+@media (max-width: 1023px) {
+    /* compact day-number cells on mobile (dayGridMonth view) */
+    .rpc-calendar-wrapper .fc-daygrid-day-frame {
+        padding: 1px;
+        min-height: 0;
+    }
+    .rpc-calendar-wrapper .fc-daygrid-day-top {
+        padding: 1px 3px;
+        line-height: 1.3;
+    }
+    .rpc-calendar-wrapper .fc-daygrid-day-number {
+        font-size: 0.6875rem;
+        padding: 2px;
+    }
+    .rpc-calendar-wrapper .fc-daygrid-day-events {
+        min-height: 0;
+    }
+}
+
+@media (max-width: 639px) {
+    .rpc-calendar-wrapper .fc {
+        font-size: 0.75rem;
+    }
+
+    .rpc-calendar-wrapper .fc-toolbar-title {
+        font-size: 1.125rem !important;
+    }
+
+    .rpc-calendar-wrapper .fc-daygrid-day-number {
+        font-size: 0.6875rem;
+    }
+
+    .rpc-calendar-wrapper .fc-daygrid-event {
+        font-size: 0.625rem;
+        padding: 1px 4px;
+    }
+
+    .rpc-calendar-wrapper .fc-col-header-cell-cushion {
+        font-size: 0.625rem;
+    }
+}
+
+
+.rpc-calendar-wrapper .fc-event {
+    border: none !important;
+}
+
+.rpc-calendar-wrapper .fc-event-main {
+    padding: 0;
+}
+
+.rpc-calendar-wrapper .fc-v-event .fc-event-main {
+    padding: 2px 6px;
 }

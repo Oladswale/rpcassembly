@@ -2,8 +2,7 @@ import { ministers } from '@/types/about'
 
 const OrganogramSection = () => {
     const pastor = ministers[0]
-    const ladyEvangelist = ministers[1]
-    const evangelists = ministers.slice(2)
+    const evangelists = ministers.slice(1)
 
     return (
         <section className='py-16 lg:py-24 bg-white relative overflow-hidden'>
@@ -29,26 +28,16 @@ const OrganogramSection = () => {
                 <div className='flex justify-center'>
                     <div className='w-px h-10 bg-royal-purple/30' />
                 </div>
-
-                {/* Level 2 — Lady Evangelist */}
-                <div className='flex justify-center mb-0'>
-                    <MinisterNode name={ladyEvangelist.name} role={ladyEvangelist.role} image={ladyEvangelist.image} size='md' />
-                </div>
-
-                {/* Connector down + horizontal spread */}
-                <div className='flex justify-center'>
-                    <div className='w-px h-10 bg-royal-purple/30' />
-                </div>
                 <div className='relative flex justify-center'>
-                    <div className='absolute top-0 left-[20%] right-[20%] h-px bg-royal-purple/30' />
+                    <div className='absolute top-0 left-[12.5%] right-[12.5%] h-px bg-royal-purple/30' />
                 </div>
 
-                {/* Level 3 — Evangelists */}
-                <div className='grid grid-cols-1 sm:grid-cols-3 gap-6 mt-0 pt-0'>
+                {/* Level 2 — Evangelists */}
+                <div className='grid grid-cols-2 sm:grid-cols-4 gap-6 mt-0 pt-0'>
                     {evangelists.map((e, i) => (
                         <div key={i} className='flex flex-col items-center'>
                             <div className='w-px h-10 bg-royal-purple/30' />
-                            <MinisterNode name={e.name} role={e.role} image={e.image} size='sm' />
+                            <MinisterNode name={e.name} role={e.role} image={e.image} size='md' />
                         </div>
                     ))}
                 </div>

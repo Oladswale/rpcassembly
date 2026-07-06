@@ -3,9 +3,30 @@ import HorizontalLine from '@/components/ui/horizontal-line'
 import SermonCard from '@/components/ui/sermon-card'
 import { Button } from '@/components/ui/button'
 import { Link } from '@inertiajs/react'
-import { sermons } from '@/types/data'
+import { useEffect, useState } from 'react'
+import { fetchLatestVideos } from '@/services/youtube'
+import type { SermonType } from '@/types/data'
+import { Loader2 } from 'lucide-react'
 
 const SermonSection = () => {
+    const [videos, setVideos] = useState<SermonType[]>([])
+    const [loading, setLoading] = useState(true)
+
+    useEffect(() => {
+        let cancelled = false
+        fetchLatestVideos(7).then((data) => {
+            if (!cancelled) {
+                setVideos(data.slice(0, 3))
+                setLoading(false)
+            }
+        }).catch(() => {
+            if (!cancelled) {
+                setLoading(false)
+            }
+        })
+        return () => { cancelled = true }
+    }, [])
+
     return (
         <section className='py-16 lg:py-24 bg-warm-cream'>
             <div className='max-w-7xl mx-auto'>
@@ -14,11 +35,17 @@ const SermonSection = () => {
                     <HorizontalLine className='mx-auto' />
                 </SectionHeader>
 
-                <div className='grid grid-cols-1 md:grid-cols-3 gap-8'>
-                    {sermons.map((sermon) => (
-                        <SermonCard key={sermon.id} {...sermon} />
-                    ))}
-                </div>
+                {loading ? (
+                    <div className='flex justify-center'>
+                        <Loader2 size={36} className='text-royal-purple animate-spin' />
+                    </div>
+                ) : (
+                    <div className='grid grid-cols-1 md:grid-cols-3 gap-8'>
+                        {videos.map((sermon) => (
+                            <SermonCard key={sermon.id} {...sermon} />
+                        ))}
+                    </div>
+                )}
 
                 <div className="flex justify-center mt-12">
                     <div className="relative group">
