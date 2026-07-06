@@ -2,17 +2,19 @@ import { Link } from '@inertiajs/react'
 import React from 'react'
 import { ChevronRight } from 'lucide-react'
 import WaveSvg from '@/assets/svgs/wave'
+import { cn } from '@/utils'
 
 interface HeroProps {
     title: string
     description?: string
     src?: string
     breadCrumb?: string
+    className?: string
 }
 
-const PageHero: React.FC<HeroProps> = ({ title, description, src, breadCrumb }) => {
+const PageHero: React.FC<HeroProps> = ({ title, description, src, breadCrumb, className }) => {
     return (
-        <section className='relative overflow-hidden pt-24 pb-32 md:pt-32 md:pb-40'>
+        <section className={cn('relative overflow-hidden pt-24 pb-32 md:pt-32 md:pb-40', className)}>
 
             <img
                 src={src || '/herobanner.jpg'}
