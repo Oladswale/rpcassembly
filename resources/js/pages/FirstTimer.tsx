@@ -55,7 +55,7 @@ export default function FirstTimer() {
                 <div className="flex flex-col bg-white text-[#1b1b18] py-12 lg:py-16">
                     <div className="w-full max-w-4xl mx-auto px-6">
                         <SectionHeader className="text-center mb-12">
-                            Welcome <span className="text-royal-purple font-serif italic">Home</span>
+                            Welcome <span className="text-royal-purple font-serif italic">To RPC Assembly</span>
                             <HorizontalLine className="mx-auto" />
                         </SectionHeader>
 
