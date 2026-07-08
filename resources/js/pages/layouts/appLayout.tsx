@@ -1,7 +1,7 @@
 import React from 'react';
+import { Toaster } from 'react-hot-toast';
 import Header from './header';
 import Footer from './footer';
-
 
 
 const PublicLayout = ({ children }: { children: React.ReactNode }) => {
@@ -12,6 +12,11 @@ const PublicLayout = ({ children }: { children: React.ReactNode }) => {
                 {children}
             </main>
             <Footer />
+            <Toaster position="top-right" toastOptions={{
+                style: {
+                    fontFamily: "'Lato', sans-serif",
+                },
+            }} />
         </div>
     )
 }

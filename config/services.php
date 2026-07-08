@@ -35,4 +35,8 @@ return [
         ],
     ],
 
+    'google_forms' => [
+        'testimony_url' => env('GOOGLE_FORM_TESTIMONY_URL'),
+    ],
+
 ];
