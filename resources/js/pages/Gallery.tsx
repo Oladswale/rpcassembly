@@ -18,7 +18,7 @@ const galleryImages = [
     { id: 9, src: '/gallery9.jpg', alt: 'Music Ministry', category: 'Music' },
     { id: 10, src: '/gallery10.jpg', alt: 'Children Church', category: 'Children' },
     { id: 11, src: '/gallery11.jpg', alt: 'Conference', category: 'Events' },
-    { id: 12, src: '/gallery12.jpg', alt: 'Thanksgiving', category: 'Services' },
+    { id: 12, src: '/gallery12.jpg', alt: 'Thanksgiving', category: 'Services'},
 ];
 
 const categories = ['All', 'Services', 'Worship', 'Outreach', 'Youth', 'Events', 'Prayer', 'Study', 'Fellowship', 'Music', 'Children'];
