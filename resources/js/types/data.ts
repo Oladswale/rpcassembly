@@ -25,9 +25,11 @@ export const navLinks: NavItem[] = [
         title: "Events",
         href: "/events",
         children: [
+            { title: "All Events", href: "/events" },
             { title: "First Timer", href: "/first-timer" },
         ],
     },
+    { title: "Gallery", href: "/gallery" },
     { title: "Contact", href: "/contact" },
 ];
 
